@@ -6,15 +6,12 @@ public:
         for (char c : s) {
             if (c >= 'a' && c <= 'z') {
                 result += c;
-            }
-            else if (c == '*') {
+            } else if (c == '*') {
                 if (!result.empty())
                     result.pop_back();
-            }
-            else if (c == '#') {
+            } else if (c == '#') {
                 result += result;
-            }
-            else if (c == '%') {
+            } else if (c == '%') {
                 reverse(result.begin(), result.end());
             }
         }
