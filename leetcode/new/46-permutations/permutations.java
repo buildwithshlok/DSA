@@ -1,23 +1,26 @@
 class Solution {
-    public List<List<Integer>> permute(int[] arr) {
-        List<List<Integer>> result=new ArrayList<>();
-        boolean used[]=new boolean[arr.length];
-        Arrays.fill(used,false);
-        perm(0,arr,used,new ArrayList<>(),result);
-        return result;
+    public List<List<Integer>> permute(int[] nums) {
+        List<List<Integer>> res=new ArrayList<>();
+        List<Integer> curr=new ArrayList<>();
+        boolean vis[]=new boolean[nums.length];
+        Arrays.fill(vis,false);
+        perm(nums,res,curr,vis);
+        return res;
+
         
     }
-    public void perm(int i, int arr[], boolean used[], List<Integer> current,List<List<Integer>> result){
-
-        if(i==arr.length) {
-        result.add(new ArrayList<>(current)); return ; }
-        
-        for(int j=0;j<arr.length;j++){
-            if(used[j]) continue;
-            used[j]=true;
-            current.add(arr[j]);
-            perm(i+1, arr,used,current,result);
-            current.remove(current.size()-1);  
-            used[j]=false;      }
+    void perm(int []nums,List<List<Integer>> res,List<Integer> curr,boolean vis[]){
+        if(curr.size()==nums.length){
+            res.add(new ArrayList<>(curr));
+            return ;
+        }
+        for(int i=0;i<nums.length;i++){
+            if(vis[i]==true) continue;
+            vis[i]=true;
+            curr.add(nums[i]);
+            perm(nums,res,curr,vis);
+            curr.remove(curr.size()-1);
+            vis[i]=false;
+        }
     }
 }
