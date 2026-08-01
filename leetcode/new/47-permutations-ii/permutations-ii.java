@@ -10,8 +10,10 @@ class Solution {
 
     }
     void perm(int nums[],List<List<Integer>> result,List<Integer> curr,boolean vis[]){
-        if(curr.size()==nums.length && !result.contains(curr)){
-            result.add(new ArrayList<>(curr)); return ;
+        if(curr.size()==nums.length){
+            if( !result.contains(curr))
+            result.add(new ArrayList<>(curr)); 
+        return ;
         }
       //  if(curr.size()==nums.length) return ;
         for(int i=0;i<nums.length;i++){
