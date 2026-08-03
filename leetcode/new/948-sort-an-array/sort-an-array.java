@@ -6,7 +6,7 @@ class Solution {
     }
     void sort(int arr[],int low,int high){
         if(low>=high) return ;
-        int mid=(low+high)/2;
+        int mid=low + (high-low)/2;
         sort(arr,low,mid);
         sort(arr,mid+1,high);
         mergesortedarray(arr,low,mid,high);
